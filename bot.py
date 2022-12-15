@@ -43,7 +43,7 @@ class Bot(Client):
         if FORCE_SUB_CHANNEL:
             try:
                 link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
-                self.invitelink = link
+                self.invitelink1 = link
             except Exception as a:
                 self.LOGGER(__name__).warning(a)
                 self.LOGGER(__name__).warning(
@@ -86,19 +86,6 @@ class Bot(Client):
      
                 )
                 sys.exit()
-        if FORCE_SUB_CHANNEL2:
-            try:
-                link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
-                self.invitelink5 = link
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning(
-                    "Bot tidak dapat Mengambil link Undangan dari FORCE_SUB_CHANNEL2!"            
-                )
-                self.LOGGER(__name__).info(
-                    "\nBot Berhenti. Gabung Group https://t.me/SharingUserbot untuk Bantuan"
-                )
-                sys.exit()
         if FORCE_SUB_GROUP1:
             try:
                 link = await self.export_chat_invite_link(FORCE_SUB_GROUP1)
@@ -115,6 +102,20 @@ class Bot(Client):
                     "\nBot Berhenti. Gabung Group https://t.me/SharingUserbot untuk Bantuan"
                 )
                 sys.exit()
+        if FORCE_SUB_CHANNEL2:
+            try:
+                link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
+                self.invitelink5 = link
+            except Exception as a:
+                self.LOGGER(__name__).warning(a)
+                self.LOGGER(__name__).warning(
+                    "Bot tidak dapat Mengambil link Undangan dari FORCE_SUB_CHANNEL2!"            
+                )
+                self.LOGGER(__name__).info(
+                    "\nBot Berhenti. Gabung Group https://t.me/SharingUserbot untuk Bantuan"
+                )
+                sys.exit()
+        
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
